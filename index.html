@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tish parvarishi</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --dark: #0d3b3e;
@@ -335,6 +337,99 @@
       color: var(--teal);
     }
 
+
+    .back {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 6px 12px 6px 8px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 16px;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .card.topic { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .card.topic::after { content: "›"; color: var(--muted); font-size: 20px; }
+    .prose h4 { margin: 18px 0 6px; font-size: 15px; color: var(--dark); }
+    .prose h4:first-child { margin-top: 0; }
+    .prose p, .prose li { color: var(--text); font-size: 14px; line-height: 1.6; }
+    .prose p { margin: 0 0 10px; }
+    .prose ul { margin: 0 0 10px; padding-left: 20px; }
+    .prose .note { padding: 10px 12px; border-radius: 10px; background: var(--teal-light); color: var(--dark); font-size: 13px; line-height: 1.5; }
+    .prose table { width: 100%; margin-bottom: 10px; border-collapse: collapse; font-size: 13px; }
+    .prose th, .prose td { padding: 8px 10px; border: 1px solid var(--border); text-align: left; vertical-align: top; line-height: 1.4; }
+    .prose th { background: var(--teal-light); color: var(--dark); }
+    .imgslot { margin-bottom: 16px; }
+    .imgbox { display: flex; text-align: center; line-height: 1.5; align-items: center; justify-content: center; width: 100%; min-height: 150px; border: 2px dashed var(--border); border-radius: 14px; background: #fff; color: var(--muted); font-size: 14px; font-weight: 600; cursor: pointer; }
+    .imgslot img { display: block; width: 100%; max-height: 300px; object-fit: cover; border-radius: 14px; }
+
+
+    /* ===== DIZAYN 2.0: pearl & mint ===== */
+    :root { --dark:#0a2e35; --teal:#14b8a6; --teal-light:#e0f6f2; --bg:#f2f8f6; --border:#dcebe7; --shadow:0 6px 18px rgba(20,120,110,.10); }
+    body { font-family: "Nunito", -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .header { position:relative; overflow:hidden; padding:26px 22px 34px; border-radius:0 0 30px 30px;
+      background: linear-gradient(155deg,#0a2e35 0%,#0f6b68 65%,#19b3a3 100%); box-shadow:0 10px 28px rgba(10,46,53,.25); }
+    .header::before,.header::after { content:""; position:absolute; border-radius:50%; background:rgba(255,255,255,.08); animation:drift 9s ease-in-out infinite; }
+    .header::before { width:140px; height:140px; right:-30px; top:-40px; }
+    .header::after { width:70px; height:70px; right:70px; bottom:-25px; animation-delay:-4s; }
+    .header > * { position:relative; z-index:1; }
+    .header h1 { font-size:26px; font-weight:800; letter-spacing:-.3px; }
+    .mascot { position:absolute !important; right:22px; top:22px; font-size:44px; z-index:2 !important; animation:floaty 3.2s ease-in-out infinite; filter:drop-shadow(0 6px 8px rgba(0,0,0,.25)); }
+    .mascot::after { content:"✦"; position:absolute; right:-10px; top:-6px; font-size:16px; color:#fff; animation:twinkle 2s ease-in-out infinite; }
+    .card,.nav-item,.reminder-row { border-radius:18px; box-shadow:var(--shadow); border-color:transparent; transition:transform .15s, box-shadow .15s; }
+    .card:active,.nav-item:active,.btn:active,.gender button:active { transform:scale(.97); }
+    .nav-item { justify-content:flex-start; gap:12px; font-size:15px; font-weight:700; }
+    .nav-item::before { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:12px; background:var(--teal-light); font-size:19px; }
+    .nav-item::after { margin-left:auto; }
+    #s-home .body > :nth-child(2)::before { content:"🎒"; }
+    #s-home .body > :nth-child(3)::before { content:"🧑"; }
+    #s-home .body > :nth-child(4)::before { content:"🤰"; }
+    #s-home .body > :nth-child(5)::before { content:"🪥"; }
+    #s-home .body > :nth-child(6)::before { content:"✨"; }
+    .streak { border-radius:18px; background:linear-gradient(135deg,#ff9a5c,#ff5d73); box-shadow:0 8px 20px rgba(255,93,115,.3); font-size:15px; font-weight:800; }
+    .streak.pop { animation:pop .5s cubic-bezier(.3,1.6,.5,1); }
+    .btn { border-radius:16px; background:linear-gradient(135deg,#14b8a6,#0f9b8e); box-shadow:0 8px 18px rgba(20,184,166,.35); transition:transform .15s; }
+    .btn.secondary { background:var(--dark); box-shadow:none; }
+    .btn.danger { background:var(--danger); box-shadow:none; }
+    .toggle { transition:background .2s; }
+    .toggle::after { transition:left .2s cubic-bezier(.3,1.5,.5,1); }
+    .card.topic h3 { font-weight:800; }
+
+    /* Taymer: to'lib boruvchi halqa */
+    .ring { --p:0; position:relative; width:180px; height:180px; border:0; font-size:32px; font-weight:800; color:var(--dark);
+      background: radial-gradient(circle closest-side,#fff 82%,transparent 84%), conic-gradient(var(--teal) calc(var(--p)*1%), #d3ebe6 0);
+      box-shadow:var(--shadow); transition:background .4s; }
+    .ring.run { animation:breathe 2s ease-in-out infinite; }
+    .ring.done { animation:pop .6s cubic-bezier(.3,1.6,.5,1); color:var(--teal); }
+    .zone { border-radius:14px; transition:all .3s; }
+    .zone.active { transform:translateX(6px); background:linear-gradient(135deg,#0a2e35,#0f6b68); }
+
+    /* Ekranlar almashishi va bosh sahifadagi ketma-ket paydo bo'lish */
+    .screen.active { animation:screenIn .35s ease-out; }
+    #s-home.active .body > * { animation:rise .55s cubic-bezier(.2,.8,.3,1) both; }
+    #s-home.active .body > :nth-child(1){animation-delay:.05s} #s-home.active .body > :nth-child(2){animation-delay:.12s}
+    #s-home.active .body > :nth-child(3){animation-delay:.19s} #s-home.active .body > :nth-child(4){animation-delay:.26s}
+    #s-home.active .body > :nth-child(5){animation-delay:.33s} #s-home.active .body > :nth-child(6){animation-delay:.4s}
+    #s-home.active .body > :nth-child(7){animation-delay:.47s} #s-home.active .body > :nth-child(8){animation-delay:.54s}
+
+    .bottomnav { border-radius:22px 22px 0 0; border:0; box-shadow:0 -6px 22px rgba(10,46,53,.10); }
+    .bottomnav button { display:flex; flex-direction:column; align-items:center; gap:2px; font-family:inherit; font-weight:700; transition:color .2s; }
+    .bottomnav button::before { font-size:19px; filter:grayscale(1) opacity(.55); transition:filter .2s, transform .3s cubic-bezier(.3,1.6,.5,1); }
+    .bottomnav button.active::before { filter:none; transform:translateY(-3px) scale(1.2); }
+    .bottomnav button:nth-child(1)::before { content:"🏠"; } .bottomnav button:nth-child(2)::before { content:"📚"; }
+    .bottomnav button:nth-child(3)::before { content:"🔔"; } .bottomnav button:nth-child(4)::before { content:"👤"; }
+
+    @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-6deg)} 50%{transform:translateY(-9px) rotate(6deg)} }
+    @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(.6)} 50%{opacity:1;transform:scale(1.2)} }
+    @keyframes drift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-14px,10px)} }
+    @keyframes rise { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+    @keyframes screenIn { from{opacity:0;transform:translateX(14px)} to{opacity:1;transform:none} }
+    @keyframes pop { 0%{transform:scale(1)} 40%{transform:scale(1.12)} 100%{transform:scale(1)} }
+    @keyframes breathe { 0%,100%{box-shadow:0 0 0 0 rgba(20,184,166,.35)} 50%{box-shadow:0 0 0 16px rgba(20,184,166,0)} }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+
     .hidden {
       display: none !important;
     }
@@ -372,6 +467,7 @@
       <header class="header">
         <h1 id="home-greet">Salom!</h1>
         <p>Bugun yaxshi kun</p>
+        <span class="mascot">🦷</span>
       </header>
 
       <main class="body">
@@ -395,6 +491,10 @@
           Texnika
         </div>
 
+        <div class="nav-item" onclick="openCategory('extra')">
+          Qo'shimcha mavzular
+        </div>
+
         <div class="card clickable" onclick="showScreen('s-timer')">
           <h3>Tish yuvish</h3>
           <p>2 daqiqa · 4 zona</p>
@@ -407,14 +507,37 @@
       </main>
     </section>
 
-    <!-- Kategoryalar -->
+    <!-- Bo'limlar ro'yxati -->
+    <section class="screen" id="s-sections">
+      <header class="header">
+        <button class="back" type="button" onclick="showScreen('s-home')">‹ Ortga</button>
+        <h1>Bo'limlar</h1>
+        <p>Mavzuni tanlang</p>
+      </header>
+      <main class="body" id="sections-content"></main>
+    </section>
+
+    <!-- Kategoriya -->
     <section class="screen" id="s-category">
       <header class="header">
+        <button class="back" type="button" onclick="showScreen('s-sections')">‹ Ortga</button>
         <h1 id="category-title">Bo'lim</h1>
         <p id="category-subtitle"></p>
       </header>
-
       <main class="body" id="category-content"></main>
+    </section>
+
+    <!-- Mavzu (batafsil) -->
+    <section class="screen" id="s-detail">
+      <header class="header">
+        <button class="back" type="button" onclick="openCategory(state.category)">‹ Ortga</button>
+        <h1 id="detail-title"></h1>
+        <p id="detail-sub"></p>
+      </header>
+      <main class="body">
+        <div class="imgslot" id="img-slot"></div>
+        <div class="prose" id="detail-content"></div>
+      </main>
     </section>
 
     <!-- TIMER -->
@@ -506,7 +629,7 @@
     <!-- Glavniy -->
     <nav class="bottomnav" id="mainnav">
       <button data-target="s-home" onclick="showScreen('s-home')">Bosh sahifa</button>
-      <button data-target="s-category" onclick="openCategory('teen')">Bo'limlar</button>
+      <button data-target="s-sections" onclick="showScreen('s-sections')">Bo'limlar</button>
       <button data-target="s-reminders" onclick="showScreen('s-reminders')">Eslatma</button>
       <button data-target="s-profile" onclick="showScreen('s-profile')">Profil</button>
     </nav>
@@ -544,6 +667,7 @@
       },
 
       category: "teen",
+      topic: null,
 
       timer: {
         running: false,
@@ -614,13 +738,20 @@
       document.querySelectorAll("#mainnav button").forEach((button) => {
         button.classList.toggle(
           "active",
-          button.dataset.target === screenId
+          button.dataset.target ===
+            (screenId === "s-category" || screenId === "s-detail" ? "s-sections" : screenId)
         );
       });
 
       // Нижняя навигация не нужна во время onboarding.
       const nav = document.getElementById("mainnav");
       nav.classList.toggle("hidden", screenId === "s-onboard");
+
+      if (screenId === "s-sections") {
+        renderSections();
+      }
+
+      window.scrollTo(0, 0);
     }
 
     /*
@@ -750,6 +881,12 @@
 
       saveState();
       renderAll();
+
+      document.querySelectorAll(".streak").forEach((el) => {
+        el.classList.remove("pop");
+        void el.offsetWidth;
+        el.classList.add("pop");
+      });
     }
 
     function renderStreak() {
@@ -790,72 +927,318 @@
       teen: {
         title: "O'smirlar",
         subtitle: "13–19 yosh",
-        cards: [
-          ["Ovqatlanish tartibi", "Kuniga 3 mahal ovqatlaning va shakarli mahsulotlarni kamaytiring."],
-          ["Vitamin va minerallar", "Kalsiy va boshqa muhim elementlar tish hamda suyaklarni qo‘llab-quvvatlaydi."],
-          ["O'zingizni tekshiring", "Oq yoki qora dog‘lar, milk qonashi va og‘riq paydo bo‘lsa, e’tibor bering."]
+        topics: [
+          {
+            id: "teen-food", title: "Ovqatlanish tartibi",
+            short: "Kuniga 3 mahal ovqatlaning, shakarli gazakni kamaytiring.",
+            body: `
+              <p>O'smirlik davrida tishlar hali shakllanishda davom etadi, shuning uchun ovqatlanish juda muhim. Kuniga 3 mahal to'liq ovqatlanish va mahallar orasida shakarli gazak yemaslikka harakat qiling.</p>
+              <p>Chipsi, gazlangan ichimlik va shokoladni kamaytiring — ular tish minasini asta-sekin yemiradi.</p>
+              <ul>
+                <li>Har ovqatdan keyin suv bilan og'izni chayqang</li>
+                <li>Kechqurun shirinlik o'rniga mevaga o'ting</li>
+                <li>Sut va tvorogni kunlik ovqatga qo'shing</li>
+              </ul>`
+          },
+          {
+            id: "teen-vitamins", title: "Vitaminlar, kalsiy va kaliy",
+            short: "Tishlar mustahkam bo'lishi uchun Ca va K yetarli bo'lsin.",
+            body: `
+              <p>Tishlar mustahkam bo'lishi uchun organizmga kalsiy (Ca) va kaliy (K) yetarli miqdorda kerak. Kalsiy tish va suyaklarni mustahkamlaydi, kaliy esa kalsiyning to'g'ri o'zlashishiga yordam beradi.</p>
+              <p>Bular sut mahsulotlari, yong'oq, banan va sabzavotlarda ko'p uchraydi.</p>
+              <p class="note">Alohida vitamin tabletkasini faqat shifokor tavsiyasi bilan iching.</p>`
+          },
+          {
+            id: "teen-check", title: "Uyda o'zingizni tekshirish",
+            short: "Oyna oldida tishlar va milkni tekshiring.",
+            body: `
+              <p>Oyna oldida quyidagilarga e'tibor bering:</p>
+              <ul>
+                <li>Tishda oq yoki qora dog' bormi? — bu kariyesning boshlanishi bo'lishi mumkin</li>
+                <li>Milk qizarganmi yoki tish yuvganda qon chiqyaptimi?</li>
+                <li>Sovuq yoki issiq ovqatdan tish sizlaydimi?</li>
+              </ul>
+              <p class="note">Agar shulardan biri bo'lsa — bu og'ir emas, lekin stomatologga ko'rinish kerak.</p>`
+          }
         ]
       },
 
       young: {
         title: "Yoshlar",
-        subtitle: "20–35 yosh",
-        cards: [
-          ["Kunlik parvarish", "Tishlarni kuniga kamida ikki marta tozalash odatini saqlang."],
-          ["Shakarni nazorat qiling", "Tez-tez shirinlik iste’mol qilishni kamaytirish og‘iz gigiyenasiga yordam beradi."],
-          ["Tekshiruv", "Noqulaylik, og‘riq yoki milk bilan bog‘liq muammo bo‘lsa, stomatologga murojaat qiling."]
+        subtitle: "Kattalar",
+        topics: [
+          {
+            id: "young-diet", title: "To'g'ri ratsion qanday tuziladi",
+            short: "3 asosiy va 1–2 yengil mahal; kislotali ichimliklarni kamaytiring.",
+            body: `
+              <p>Kuniga ovqatlanishni 3 asosiy va 1–2 yengil mahalga bo'ling. Shakar va kislotali ichimliklarni (gazli suv, energetik ichimlik) kamaytiring — ular tish minasini eritadi.</p>
+              <p class="note">Har bir ovqatdan keyin darhol tish yuvish shart emas — 30 daqiqa kutib, keyin yuving, aks holda kislota ta'siridagi minani yanada shikastlashi mumkin.</p>`
+          },
+          {
+            id: "young-whiten", title: "Tishlarni oqartirish",
+            short: "Uy vositalari va professional oqartirish farqi.",
+            body: `
+              <p>Uy sharoitida oqartiruvchi pastalar va tasmalar mavjud, lekin ular faqat yuza dog'larni ozgina kamaytiradi.</p>
+              <p>Professional oqartirish klinikada, shifokor nazorati ostida qilinishi kerak — aks holda milk kuyishi yoki tish sezgirligi oshib ketishi mumkin.</p>
+              <p class="note">Homiladorlik va emizish davrida oqartirish tavsiya etilmaydi.</p>`
+          },
+          {
+            id: "young-gums", title: "Milk zararlanishi",
+            short: "Milk qonashi, qizarishi va shishishi sabablari.",
+            body: `
+              <p>Milk qonashi, qizarishi yoki shishishi — ko'pincha noto'g'ri yoki kamdan-kam tish tozalash natijasida yig'ilib qolgan bakterial parda (plak) tufayli yuzaga keladi.</p>
+              <p>Erta bosqichda (gingivit) bu holatni oddiy tozalash va ip (floss) bilan tuzatish mumkin. Kechiktirilsa, parodontit (chuqurroq zararlanish) rivojlanishi mumkin.</p>`
+          },
+          {
+            id: "young-habits", title: "Zararli odatlar asoratini yo'qotish",
+            short: "Chekish, alkogol, tirnoq tishlash — zararini kamaytirish.",
+            body: `
+              <p>Chekish, alkogol va tirnoq qirqish/tishlash kabi odatlar tish va milkka zarar yetkazadi: tish rangi o'zgaradi, milk qon aylanishi yomonlashadi, tish sinishi xavfi ortadi.</p>
+              <p class="note">Odatni tashlagandan keyin ham organizm 3–6 oy ichida asta sog'ayadi — muntazam gigiena va stomatolog nazorati bu jarayonni tezlashtiradi.</p>`
+          },
+          {
+            id: "young-diseases", title: "Kasalliklar",
+            short: "Kariyes, pulpit va parodontit.",
+            body: `
+              <ul>
+                <li><b>Kariyes</b> — tish to'qimasining yemirilishi, oq/qora dog'dan boshlanadi</li>
+                <li><b>Pulpit</b> — tish ichidagi nervning yallig'lanishi, kuchli og'riq bilan kechadi</li>
+                <li><b>Parodontit</b> — milk va tish tagidagi to'qimaning zararlanishi, tish bo'shashishiga olib keladi</li>
+              </ul>`
+          }
         ]
       },
 
       pregnancy: {
         title: "Homiladorlar",
         subtitle: "Homiladorlik davrida",
-        cards: [
-          ["Og‘iz gigiyenasi", "Tishlarni yumshoq harakatlar bilan muntazam tozalang."],
-          ["Milk holati", "Milk qonashi yoki shishishi davom etsa, mutaxassis bilan maslahatlashish kerak."],
-          ["Ovqatlanish", "Muvozanatli ovqatlanish va yetarli suyuqlik iste’mol qilish muhim."]
+        topics: [
+          {
+            id: "preg-state", title: "Tish holati va yemirilishi",
+            short: "Toksikozda qusgandan keyin tishni to'g'ri parvarish qilish.",
+            body: `
+              <p>Homiladorlikning ilk oylarida ko'ngil aynishi (toksikoz) tufayli qusish tish minasiga kislota ta'sirini oshiradi.</p>
+              <p class="note">Qusgandan keyin darhol tish yuvmang — avval og'izni suv yoki soda eritmasi bilan chayqang, 30 daqiqadan so'ng yuving.</p>`
+          },
+          {
+            id: "preg-vit", title: "Vitamin, kalsiy va kaliyning o'zlashishi",
+            short: "Ona kalsiy zaxirasi bola uchun sarflanadi.",
+            body: `
+              <p>Homiladorlik davrida bola suyak va tishlarini shakllantirish uchun onaning kalsiy zaxirasidan foydalanadi. Agar ovqat bilan yetarli kalsiy kirmasa, ona organizmi o'zining suyak-tishidan kalsiyni “qarz oladi”.</p>
+              <p>Shuning uchun sut mahsulotlari, tuxum va yashil sabzavotlarni ko'proq iste'mol qilish tavsiya etiladi.</p>`
+          },
+          {
+            id: "preg-effect", title: "Zararlanish va bolaga ta'siri",
+            short: "Og'iz infeksiyasi homiladorlikka ta'sir qilishi mumkin.",
+            body: `
+              <p>Onadagi og'iz bo'shlig'i infeksiyasi (masalan, davolanmagan parodontit) homiladorlikka salbiy ta'sir qilishi, jumladan muddatidan oldin tug'ilish xavfini oshirishi mumkin degan ilmiy ma'lumotlar bor.</p>
+              <p class="note">Shuning uchun homiladorlik davrida ham stomatologik tekshiruvni to'xtatmaslik kerak — bu nafaqat ona, balki bola sog'lig'i uchun ham muhim.</p>`
+          },
+          {
+            id: "preg-gingivitis", title: "Milk qon ketishi (homiladorlik gingiviti)",
+            short: "Gormonal o'zgarishlar tufayli — keng tarqalgan holat.",
+            body: `
+              <p>Gormonal o'zgarishlar tufayli homilador ayollarning milki odatdagidan ko'ra ko'proq qon oqishi mumkin — bu keng tarqalgan holat va “homiladorlik gingiviti” deb ataladi.</p>
+              <p>Yumshoq tukli cho'tka bilan muntazam, ammo ehtiyotkorlik bilan tozalash holatni yengillashtiradi.</p>
+              <p class="note">Kuchli qonash yoki og'riq bo'lsa, shifokorga murojaat qiling.</p>`
+          }
         ]
       },
 
       technique: {
         title: "Texnika",
-        subtitle: "Tishlarni to‘g‘ri tozalash",
-        cards: [
-          ["1. Tashqi yuzalar", "Cho‘tkani milk chizig‘iga yaqin tutib, mayin harakatlar bilan tozalang."],
-          ["2. Ichki yuzalar", "Har bir tishning ichki tomoniga ham vaqt ajrating."],
-          ["3. Chaynash yuzalari", "Orqa tishlarning chaynash yuzalarini ham tozalang."],
-          ["4. Til", "Og‘iz gigiyenasini yakunlash uchun til yuzasini ehtiyotkorlik bilan tozalang."]
+        subtitle: "Tishlarni to'g'ri tozalash",
+        topics: [
+          {
+            id: "tech-brush", title: "Tish yuvish texnikasi",
+            short: "2 daqiqa, 4 zona, 45° burchak.",
+            body: `
+              <p>To'g'ri texnika — kasalliklarning oldini olishning eng oson va bepul usuli. Jarayon jami 2 daqiqa davom etadi, 4 zonaga bo'linadi (har biriga 30 soniya):</p>
+              <ul>
+                <li>Yuqori jag' — tashqi tomon</li>
+                <li>Yuqori jag' — ichki tomon</li>
+                <li>Pastki jag' — tashqi tomon</li>
+                <li>Pastki jag' — ichki tomon</li>
+              </ul>
+              <p class="note">Cho'tkani milkka nisbatan 45° burchakda tuting va kichik doiraviy harakatlar bilan yuving — u yoqdan-bu yoqqa kuchli “qirib” yuvish milkni shikastlaydi.</p>`
+          }
+        ]
+      },
+
+      extra: {
+        title: "Qo'shimcha mavzular",
+        subtitle: "Chekish, kariyes, vitaminlar, nonushta",
+        topics: [
+          {
+            id: "x-smoking", title: "Chekishning tish va milkka ta'siri",
+            short: "Nima bo'ladi va nima qilish kerak.",
+            body: `
+              <h4>Nima bo'ladi</h4>
+              <ul>
+                <li>Milkka qon aylanishi yomonlashadi — milk to'q-binafsha tusga kiradi, lekin qon kamroq chiqadi, shu sabab muammo tashqaridan ko'rinmay ichdan kuchayib boradi</li>
+                <li>Tish tez sarg'ayadi, tish toshi (nalyot) tezroq yig'iladi</li>
+                <li>Yara yoki kesik sekinroq bitadi — bu jarrohlikdan keyin xavfli</li>
+                <li>Parodontit va og'iz bo'shlig'i saraton xavfi sezilarli oshadi</li>
+                <li>Og'iz hidi yomonlashadi (halitoz)</li>
+              </ul>
+              <h4>Nima qilish kerak</h4>
+              <ul>
+                <li>Chekish sonini kamaytirish, imkon qadar butunlay tashlash</li>
+                <li>Har chekishdan keyin og'izni suv bilan chayqash</li>
+                <li>Ftorli pasta va yumshoq cho'tkadan foydalanish</li>
+                <li>Yiliga 2 marta professional tish toshi tozalatish</li>
+                <li>Muntazam stomatolog nazoratidan o'tish — chekuvchilarda muammo ko'pincha kech sezilib qoladi</li>
+              </ul>`
+          },
+          {
+            id: "x-caries", title: "Kariyes bosqichlari",
+            short: "O'zingizni tekshirib ko'ring.",
+            body: `
+              <table>
+                <tr><th>Bosqich</th><th>Belgisi</th></tr>
+                <tr><td>1 — Boshlang'ich</td><td>Tishda oq, xira dog' (og'riq yo'q)</td></tr>
+                <tr><td>2 — Yuza (emal)</td><td>Dog' sarg'ish/jigarrang tusga kiradi, sovuq-shirinlikka sal sezgirlik</td></tr>
+                <tr><td>3 — O'rta (dentin)</td><td>Ko'zga ko'rinadigan teshik, ovqat qolib qoladi, og'riq tez-tez paydo bo'ladi</td></tr>
+                <tr><td>4 — Chuqur</td><td>Kuchli, uzoq og'riq, issiq/sovuqqa keskin reaksiya, teshik katta</td></tr>
+              </table>
+              <p class="note">Agar 4-bosqichdan keyin ham davolanmasa — pulpit (nerv yallig'lanishi, kechasi kuchayadigan og'riq), keyin periodontit (tish tagi yallig'lanishi) rivojlanishi mumkin.</p>`
+          },
+          {
+            id: "x-vitamins", title: "Vitamin/element — qaysi mahsulotlarda bor",
+            short: "Tish uchun muhim elementlar jadvali.",
+            body: `
+              <table>
+                <tr><th>Element</th><th>Mahsulotlar</th></tr>
+                <tr><td>Kalsiy (Ca)</td><td>Sut, tvorog, pishloq, qatiq, kunjut, bodom</td></tr>
+                <tr><td>Vitamin D</td><td>Tuxum sarig'i, baliq, quyosh nuri (kalsiy o'zlashishi uchun shart)</td></tr>
+                <tr><td>Fosfor</td><td>Go'sht, baliq, tuxum, yong'oq</td></tr>
+                <tr><td>Vitamin C</td><td>Apelsin, limon, qizil qalampir, brokkoli (milk uchun)</td></tr>
+                <tr><td>Vitamin A</td><td>Sabzi, qovoq, jigar, shirin kartoshka</td></tr>
+                <tr><td>Kaliy (K)</td><td>Banan, kartoshka, quritilgan mevalar, ismaloq</td></tr>
+              </table>`
+          },
+          {
+            id: "x-breakfast", title: "Nonushta",
+            short: "Nimani tavsiya etamiz va nimadan saqlanamiz.",
+            body: `
+              <h4>Nonushtaga tavsiya etiladi</h4>
+              <ul>
+                <li>Tuxum + sabzavot</li>
+                <li>Tvorog yoki qatiq + yong'oq</li>
+                <li>Sut bilan bo'tqa (ovsyanka)</li>
+                <li>Yangi meva</li>
+                <li>To'liq don noni + pishloq</li>
+              </ul>
+              <h4>Nonushtada saqlaning</h4>
+              <ul>
+                <li>Shakarli myusli yoki quruq yog'och batonchik</li>
+                <li>Gazli ichimlik</li>
+                <li>Faqat shirin bulochka + qahva (to'yimli ovqatsiz)</li>
+              </ul>`
+          }
         ]
       }
     };
 
+    function renderSections() {
+      document.getElementById("sections-content").innerHTML = Object.entries(categories)
+        .map(([id, c]) => `
+          <div class="card clickable topic" onclick="openCategory('${id}')">
+            <div><h3>${c.title}</h3><p>${c.subtitle}</p></div>
+          </div>`)
+        .join("");
+    }
+
     function openCategory(categoryId) {
       const category = categories[categoryId];
-
-      if (!category) {
-        return;
-      }
+      if (!category) return;
 
       state.category = categoryId;
+      document.getElementById("category-title").textContent = category.title;
+      document.getElementById("category-subtitle").textContent = category.subtitle;
 
-      document.getElementById("category-title").textContent =
-        category.title;
-
-      document.getElementById("category-subtitle").textContent =
-        category.subtitle;
-
-      const content = document.getElementById("category-content");
-
-      content.innerHTML = category.cards
-        .map(([title, description]) => `
-          <div class="card">
-            <h3>${title}</h3>
-            <p>${description}</p>
-          </div>
-        `)
+      document.getElementById("category-content").innerHTML = category.topics
+        .map((t) => `
+          <div class="card clickable topic" onclick="openTopic('${t.id}')">
+            <div><h3>${t.title}</h3><p>${t.short}</p></div>
+          </div>`)
         .join("");
 
       showScreen("s-category");
+    }
+
+    function findTopic(topicId) {
+      for (const c of Object.values(categories)) {
+        const t = c.topics.find((x) => x.id === topicId);
+        if (t) return t;
+      }
+      return null;
+    }
+
+    function openTopic(topicId) {
+      const topic = findTopic(topicId);
+      if (!topic) return;
+
+      state.topic = topicId;
+      document.getElementById("detail-title").textContent = topic.title;
+      document.getElementById("detail-sub").textContent = categories[state.category].title;
+      document.getElementById("detail-content").innerHTML = topic.body;
+
+      renderImageSlot();
+      showScreen("s-detail");
+    }
+
+    /*
+     * =========================
+     * RASMLAR — shu yerga o'zingiz qo'shasiz
+     * =========================
+     * Har bir mavzu id'si uchun rasm yo'llarini yozing, masalan:
+     *   "teen-food": ["img/ovqat.jpg"],
+     * Bir nechta rasm ham mumkin: ["img/a.jpg", "img/b.jpg"]
+     * Bo'sh [] qoldirsangiz — o'sha joyda bo'sh o'rin (placeholder) ko'rinadi.
+     * Tayyor bo'lgach SHOW_EMPTY_PLACEHOLDERS = false qiling — bo'sh joylar yashiriladi.
+     */
+    const SHOW_EMPTY_PLACEHOLDERS = true;
+
+    const TOPIC_IMAGES = {
+      // O'smirlar
+      "teen-food": [],
+      "teen-vitamins": [],
+      "teen-check": [],
+      // Yoshlar
+      "young-diet": [],
+      "young-whiten": [],
+      "young-gums": [],
+      "young-habits": [],
+      "young-diseases": [],
+      // Homiladorlar
+      "preg-state": [],
+      "preg-vit": [],
+      "preg-effect": [],
+      "preg-gingivitis": [],
+      // Texnika
+      "tech-brush": [],
+      // Qo'shimcha
+      "x-smoking": [],
+      "x-caries": [],
+      "x-vitamins": [],
+      "x-breakfast": []
+    };
+
+    function renderImageSlot() {
+      const slot = document.getElementById("img-slot");
+      const list = TOPIC_IMAGES[state.topic] || [];
+
+      if (list.length) {
+        slot.innerHTML = list
+          .map((src) => `<img src="${src}" alt="" style="margin-bottom:10px">`)
+          .join("");
+      } else if (SHOW_EMPTY_PLACEHOLDERS) {
+        slot.innerHTML =
+          `<div class="imgbox" style="cursor:default">Rasm o'rni<br>(${state.topic})</div>`;
+      } else {
+        slot.innerHTML = "";
+      }
     }
 
     /*
@@ -922,12 +1305,15 @@
         formatTime(state.timer.secondsLeft);
 
       document.getElementById("timer-btn").textContent = "Boshlash";
+      setRing(0);
+      document.getElementById("ring-time").classList.remove("done");
 
       renderZones();
     }
 
     function startTimer() {
       state.timer.running = true;
+      document.getElementById("ring-time").classList.add("run");
 
       document.getElementById("timer-btn").textContent = "To‘xtatish";
 
@@ -939,6 +1325,7 @@
 
     function stopTimer() {
       state.timer.running = false;
+      document.getElementById("ring-time").classList.remove("run");
 
       if (state.timer.intervalId !== null) {
         clearInterval(state.timer.intervalId);
@@ -985,6 +1372,8 @@
       document.getElementById("ring-time").textContent =
         formatTime(Math.max(state.timer.secondsLeft, 0));
 
+      setRing((ZONE_SECONDS * TOTAL_ZONES - Math.max(state.timer.secondsLeft, 0)) / (ZONE_SECONDS * TOTAL_ZONES) * 100);
+
       renderZones();
 
       if (state.timer.secondsLeft <= 0) {
@@ -998,6 +1387,7 @@
       state.timer.zoneIndex = TOTAL_ZONES;
 
       document.getElementById("ring-time").textContent = "Tayyor!";
+      document.getElementById("ring-time").classList.add("done");
       document.getElementById("timer-btn").textContent =
         "Qaytadan boshlash";
 
@@ -1022,6 +1412,10 @@
           zone.classList.add("active");
         }
       });
+    }
+
+    function setRing(percent) {
+      document.getElementById("ring-time").style.setProperty("--p", percent);
     }
 
     function formatTime(seconds) {
