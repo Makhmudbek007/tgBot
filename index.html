@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tish parvarishi</title>
 
-  <!-- <img src="img/img15.jfif" alt="" style="margin-bottom:10px"> -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -1069,7 +1067,7 @@
 
       extra: {
         title: "Qo'shimcha mavzular",
-        subtitle: "Chekish, kariyes, vitaminlar, nonushta",
+        subtitle: "Chekish, kariyes, vitaminlar, ratsion",
         topics: [
           {
             id: "x-smoking", title: "Chekishning tish va milkka ta'siri",
@@ -1120,23 +1118,43 @@
               </table>`
           },
           {
-            id: "x-breakfast", title: "Nonushta",
-            short: "Nimani tavsiya etamiz va nimadan saqlanamiz.",
+            id: "x-ration", title: "Ratsion",
+            short: "Kunlik ovqatlanish tartibi va taxminiy kaloriyalar.",
             body: `
-              <h4>Nonushtaga tavsiya etiladi</h4>
+              <p>Kunlik ovqatlanish tartibi va taxminiy kaloriyalar.</p>
+              <h4>🌅 Nonushta — 300–400 kkal</h4>
               <ul>
                 <li>Tuxum + sabzavot</li>
                 <li>Tvorog yoki qatiq + yong'oq</li>
-                <li>Sut bilan bo'tqa (ovsyanka)</li>
-                <li>Yangi meva</li>
+                <li>Sutli ovsyanka + meva</li>
                 <li>To'liq don noni + pishloq</li>
               </ul>
-              <h4>Nonushtada saqlaning</h4>
+              <h4>☀️ Tushlik — 450–600 kkal</h4>
               <ul>
-                <li>Shakarli myusli yoki quruq yog'och batonchik</li>
-                <li>Gazli ichimlik</li>
-                <li>Faqat shirin bulochka + qahva (to'yimli ovqatsiz)</li>
-              </ul>`
+                <li>Sho'rva + non</li>
+                <li>Tovuq/baliq + guruch yoki grechka + sabzavot</li>
+                <li>Go'sht + sabzavotli garnir</li>
+              </ul>
+              <h4>🌙 Kechki ovqat — 300–450 kkal</h4>
+              <ul>
+                <li>Baliq + sabzavot</li>
+                <li>Tovuq + salat</li>
+                <li>Tvorog yoki qatiq + meva</li>
+                <li>Sabzavot + tuxum</li>
+              </ul>
+              <h4>🍎 Tamaddi — 100–200 kkal</h4>
+              <ul>
+                <li>Meva</li>
+                <li>Qatiq</li>
+                <li>Bir hovuch yong'oq</li>
+              </ul>
+              <h4>💧 Ichimlik</h4>
+              <ul>
+                <li>Suv — 0 kkal</li>
+                <li>Shakarsiz choy/qahva — 0–10 kkal</li>
+              </ul>
+              <p><b>Kunlik jami: taxminan 1200–1650 kkal</b></p>
+              <p class="note">Aniq qiymat porsiya va mahsulotga qarab o'zgaradi.</p>`
           }
         ]
       }
@@ -1209,7 +1227,7 @@
       "teen-check": ["img/img3.jfif"],
       // Yoshlar
       "young-diet": ["img/img4.png"],
-      "young-whiten": ["img/img5.pjfif"],
+      "young-whiten": ["img/img5.jfif"],
       "young-gums": ["img/img6.png"],
       "young-habits": ["img/img7.jfif"],
       "young-diseases": ["img/img8.png"],
@@ -1224,7 +1242,8 @@
       "x-smoking": ["img/img14.png"],
       "x-caries": ["img/img15.jfif"],
       "x-vitamins": ["img/img16.png"],
-      "x-breakfast": ["img/img17.jfif"]
+      "x-ration": ["img/img17.jfif"],
+      "x-breakfast": ["img/img17.jfif"] // eski nom (zaxira)
     };
 
     function renderImageSlot() {
@@ -1461,7 +1480,7 @@
       }
 
       // Если пользователь открыл onboarding повторно,
-      // его данные остаются заполненными.1
+      // его данные остаются заполненными.
       fillProfileForm();
     }
 
