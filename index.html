@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tish parvarishi</title>
+
+  <style>
+    :root {
+      --dark: #0d3b3e;
+      --teal: #0f9b8e;
+      --teal-light: #e6f5f3;
+      --bg: #f4f7f7;
+      --card: #ffffff;
+      --text: #12292b;
+      --muted: #6b8482;
+      --border: #e1eceb;
+      --danger: #c94b4b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding-bottom: 82px;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      padding: 22px 20px 20px;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .header h1 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .header p {
+      margin: 0;
+      color: #a9d3cf;
+      font-size: 13px;
+    }
+
+    .body {
+      flex: 1;
+      padding: 16px;
+    }
+
+    .card {
+      margin-bottom: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+    }
+
+    .card h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    .clickable:active {
+      background: var(--teal-light);
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-item::after {
+      content: "›";
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .streak {
+      margin-bottom: 14px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: var(--dark);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--teal);
+    }
+
+    input::placeholder {
+      color: #8fa5a3;
+    }
+
+    .gender {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .gender button {
+      flex: 1;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .gender button.selected {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn:active {
+      opacity: 0.85;
+    }
+
+    .btn.secondary {
+      margin-top: 10px;
+      background: var(--dark);
+    }
+
+    .btn.danger {
+      background: var(--danger);
+    }
+
+    .reminder-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: var(--border);
+      cursor: pointer;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      transition: left 0.15s;
+    }
+
+    .toggle.on {
+      background: var(--teal);
+    }
+
+    .toggle.on::after {
+      left: 22px;
+    }
+
+    .timer-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0 10px;
+    }
+
+    .ring {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 18px;
+      border: 6px solid var(--teal);
+      border-radius: 50%;
+      color: var(--dark);
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .zones {
+      width: 100%;
+      margin-bottom: 14px;
+    }
+
+    .zone {
+      margin-bottom: 8px;
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .zone.done {
+      background: var(--teal-light);
+      color: var(--dark);
+    }
+
+    .zone.active {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .info {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .bottomnav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      z-index: 10;
+      display: flex;
+      width: 100%;
+      max-width: 420px;
+      padding: 10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%);
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .bottomnav button {
+      flex: 1;
+      padding: 4px;
+      border: 0;
+      background: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .bottomnav button.active {
+      color: var(--teal);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- ONBOARDING -->
+    <section class="screen active" id="s-onboard">
+      <header class="header">
+        <h1>Xush kelibsiz</h1>
+        <p>Sizga mos maslahat uchun ma'lumotlarni kiriting</p>
+      </header>
+
+      <main class="body">
+        <input id="in-name" placeholder="Ismingiz" autocomplete="name">
+        <input id="in-phone" placeholder="Telefon raqam" type="tel" autocomplete="tel">
+        <input id="in-age" placeholder="Yoshingiz" type="number" min="1" max="120">
+
+        <div class="gender">
+          <button type="button" id="g-ayol" onclick="selectGender('ayol')">Ayol</button>
+          <button type="button" id="g-erkak" onclick="selectGender('erkak')">Erkak</button>
+        </div>
+
+        <button class="btn" type="button" onclick="saveProfile()">
+          Davom etish
+        </button>
+      </main>
+    </section>
+
+    <!-- HOME -->
+    <section class="screen" id="s-home">
+      <header class="header">
+        <h1 id="home-greet">Salom!</h1>
+        <p>Bugun yaxshi kun</p>
+      </header>
+
+      <main class="body">
+        <div class="streak" id="streak-badge">
+          🔥 0 kun ketma-ket yuvilgan
+        </div>
+
+        <div class="nav-item" onclick="openCategory('teen')">
+          O'smirlar
+        </div>
+
+        <div class="nav-item" onclick="openCategory('young')">
+          Yoshlar
+        </div>
+
+        <div class="nav-item" onclick="openCategory('pregnancy')">
+          Homiladorlar
+        </div>
+
+        <div class="nav-item" onclick="openCategory('technique')">
+          Texnika
+        </div>
+
+        <div class="card clickable" onclick="showScreen('s-timer')">
+          <h3>Tish yuvish</h3>
+          <p>2 daqiqa · 4 zona</p>
+        </div>
+
+        <div class="card clickable" onclick="showScreen('s-reminders')">
+          <h3>Eslatmalar</h3>
+          <p id="home-reminder-text">Ertalabki va kechqurungi eslatmalar</p>
+        </div>
+      </main>
+    </section>
+
+    <!-- Kategoryalar -->
+    <section class="screen" id="s-category">
+      <header class="header">
+        <h1 id="category-title">Bo'lim</h1>
+        <p id="category-subtitle"></p>
+      </header>
+
+      <main class="body" id="category-content"></main>
+    </section>
+
+    <!-- TIMER -->
+    <section class="screen" id="s-timer">
+      <header class="header">
+        <h1>Tish yuvish</h1>
+        <p>2 daqiqa · 4 zona</p>
+      </header>
+
+      <main class="body">
+        <div class="timer-wrap">
+          <div class="ring" id="ring-time">02:00</div>
+
+          <div class="zones" id="zone-list">
+            <div class="zone" data-zone="0">Yuqori tashqi</div>
+            <div class="zone" data-zone="1">Yuqori ichki</div>
+            <div class="zone" data-zone="2">Pastki tashqi</div>
+            <div class="zone" data-zone="3">Pastki ichki</div>
+          </div>
+
+          <button class="btn" id="timer-btn" onclick="toggleTimer()">
+            Boshlash
+          </button>
+
+          <p class="info">
+            Har bir zona uchun 30 soniya ajrating.
+            Taymer tugagach, bugungi yuvish avtomatik qayd etiladi.
+          </p>
+        </div>
+      </main>
+    </section>
+
+    <!-- Eslatmalar -->
+    <section class="screen" id="s-reminders">
+      <header class="header">
+        <h1>Eslatmalar</h1>
+        <p>Kunlik odat</p>
+      </header>
+
+      <main class="body">
+        <div class="reminder-row">
+          Ertalabki · 07:30
+          <div class="toggle on" id="tg1" onclick="toggleReminder('morning')"></div>
+        </div>
+
+        <div class="reminder-row">
+          Kechqurungi · 21:00
+          <div class="toggle on" id="tg2" onclick="toggleReminder('evening')"></div>
+        </div>
+
+        <button class="btn" id="wash-btn" onclick="markWashed()">
+          ✓ Yuvdim
+        </button>
+      </main>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="screen" id="s-profile">
+      <header class="header">
+        <h1>Profil</h1>
+        <p>Sizning ma'lumotlaringiz</p>
+      </header>
+
+      <main class="body">
+        <div class="card">
+          <h3 id="pf-name">—</h3>
+          <p id="pf-details">Ma'lumot kiritilmagan</p>
+          <p class="info" id="pf-phone"></p>
+        </div>
+
+        <div class="streak" id="pf-streak">
+          🔥 0 kun ketma-ket yuvilgan
+        </div>
+
+        <div class="nav-item" onclick="editProfile()">
+          Ma'lumotlarni tahrirlash
+        </div>
+
+        <div class="nav-item" onclick="showScreen('s-reminders')">
+          Eslatma sozlamalari
+        </div>
+
+        <button class="btn danger" onclick="resetProgress()">
+          Statistikani tozalash
+        </button>
+      </main>
+    </section>
+
+    <!-- Glavniy -->
+    <nav class="bottomnav" id="mainnav">
+      <button data-target="s-home" onclick="showScreen('s-home')">Bosh sahifa</button>
+      <button data-target="s-category" onclick="openCategory('teen')">Bo'limlar</button>
+      <button data-target="s-reminders" onclick="showScreen('s-reminders')">Eslatma</button>
+      <button data-target="s-profile" onclick="showScreen('s-profile')">Profil</button>
+    </nav>
+  </div>
+
+  <script>
+    /*
+     * =========================
+     * 1. APP STATE
+     * =========================
+     */
+
+    const STORAGE_KEYS = {
+      profile: "tooth_profile",
+      progress: "tooth_progress",
+      reminders: "tooth_reminders"
+    };
+
+    const state = {
+      profile: {
+        name: "",
+        phone: "",
+        age: "",
+        gender: ""
+      },
+
+      progress: {
+        streak: 0,
+        lastWashedDate: null
+      },
+
+      reminders: {
+        morning: true,
+        evening: true
+      },
+
+      category: "teen",
+
+      timer: {
+        running: false,
+        zoneIndex: 0,
+        secondsLeft: 120,
+        intervalId: null
+      }
+    };
+
+    /*
+     * =========================
+     * 2. STORAGE
+     * =========================
+     */
+
+    function loadState() {
+      state.profile = loadObject(STORAGE_KEYS.profile, state.profile);
+      state.progress = loadObject(STORAGE_KEYS.progress, state.progress);
+      state.reminders = loadObject(STORAGE_KEYS.reminders, state.reminders);
+
+      // Старый формат данных тоже не ломает приложение.
+      state.progress.streak = Number(state.progress.streak) || 0;
+
+      if (!state.progress.lastWashedDate) {
+        state.progress.lastWashedDate = null;
+      }
+    }
+
+    function loadObject(key, fallback) {
+      try {
+        const saved = localStorage.getItem(key);
+
+        if (!saved) {
+          return { ...fallback };
+        }
+
+        return {
+          ...fallback,
+          ...JSON.parse(saved)
+        };
+      } catch (error) {
+        console.warn("Storage read error:", error);
+        return { ...fallback };
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEYS.profile, JSON.stringify(state.profile));
+        localStorage.setItem(STORAGE_KEYS.progress, JSON.stringify(state.progress));
+        localStorage.setItem(STORAGE_KEYS.reminders, JSON.stringify(state.reminders));
+      } catch (error) {
+        console.warn("Storage save error:", error);
+      }
+    }
+
+    /*
+     * =========================
+     * 3. NAVIGATION
+     * =========================
+     */
+
+    function showScreen(screenId) {
+      document.querySelectorAll(".screen").forEach((screen) => {
+        screen.classList.toggle("active", screen.id === screenId);
+      });
+
+      document.querySelectorAll("#mainnav button").forEach((button) => {
+        button.classList.toggle(
+          "active",
+          button.dataset.target === screenId
+        );
+      });
+
+      // Нижняя навигация не нужна во время onboarding.
+      const nav = document.getElementById("mainnav");
+      nav.classList.toggle("hidden", screenId === "s-onboard");
+    }
+
+    /*
+     * =========================
+     * 4. PROFILE / ONBOARDING
+     * =========================
+     */
+
+    function selectGender(gender) {
+      state.profile.gender = gender;
+
+      document.getElementById("g-ayol")
+        .classList.toggle("selected", gender === "ayol");
+
+      document.getElementById("g-erkak")
+        .classList.toggle("selected", gender === "erkak");
+    }
+
+    function fillProfileForm() {
+      document.getElementById("in-name").value = state.profile.name;
+      document.getElementById("in-phone").value = state.profile.phone;
+      document.getElementById("in-age").value = state.profile.age;
+
+      selectGender(state.profile.gender);
+    }
+
+    function saveProfile() {
+      state.profile.name =
+        document.getElementById("in-name").value.trim() || "Do‘st";
+
+      state.profile.phone =
+        document.getElementById("in-phone").value.trim();
+
+      state.profile.age =
+        document.getElementById("in-age").value.trim();
+
+      saveState();
+      renderAll();
+
+      showScreen("s-home");
+    }
+
+    function editProfile() {
+      fillProfileForm();
+      showScreen("s-onboard");
+    }
+
+    function renderProfile() {
+      const name = state.profile.name || "—";
+
+      document.getElementById("pf-name").textContent = name;
+
+      const details = [];
+
+      if (state.profile.age) {
+        details.push(`${state.profile.age} yosh`);
+      }
+
+      if (state.profile.gender) {
+        details.push(
+          state.profile.gender === "ayol" ? "Ayol" : "Erkak"
+        );
+      }
+
+      document.getElementById("pf-details").textContent =
+        details.length
+          ? details.join(" · ")
+          : "Ma’lumot kiritilmagan";
+
+      document.getElementById("pf-phone").textContent =
+        state.profile.phone
+          ? `Telefon: ${state.profile.phone}`
+          : "";
+
+      document.getElementById("home-greet").textContent =
+        `Salom, ${name}!`;
+
+      renderStreak();
+    }
+
+    /*
+     * =========================
+     * 5. STREAK / DAILY LOGIC
+     * =========================
+     */
+
+    function getToday() {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+    }
+
+    function getDateBefore(dateString) {
+      const date = new Date(`${dateString}T00:00:00`);
+      date.setDate(date.getDate() - 1);
+
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+    }
+
+    function markWashed() {
+      const today = getToday();
+      const lastDate = state.progress.lastWashedDate;
+
+      // Нельзя увеличить streak несколько раз за один день.
+      if (lastDate === today) {
+        updateWashButton();
+        return;
+      }
+
+      // Если вчера тоже была отметка — продолжаем streak.
+      if (lastDate === getDateBefore(today)) {
+        state.progress.streak += 1;
+      } else {
+        // Если был пропуск — начинаем новую серию.
+        state.progress.streak = 1;
+      }
+
+      state.progress.lastWashedDate = today;
+
+      saveState();
+      renderAll();
+    }
+
+    function renderStreak() {
+      const text =
+        `🔥 ${state.progress.streak} kun ketma-ket yuvilgan`;
+
+      document.getElementById("streak-badge").textContent = text;
+      document.getElementById("pf-streak").textContent = text;
+
+      updateWashButton();
+    }
+
+    function updateWashButton() {
+      const button = document.getElementById("wash-btn");
+
+      if (state.progress.lastWashedDate === getToday()) {
+        button.textContent = "✓ Bugun yuvildi";
+      } else {
+        button.textContent = "✓ Yuvdim";
+      }
+    }
+
+    function resetProgress() {
+      state.progress.streak = 0;
+      state.progress.lastWashedDate = null;
+
+      saveState();
+      renderAll();
+    }
+
+    /*
+     * =========================
+     * 6. CATEGORIES
+     * =========================
+     */
+
+    const categories = {
+      teen: {
+        title: "O'smirlar",
+        subtitle: "13–19 yosh",
+        cards: [
+          ["Ovqatlanish tartibi", "Kuniga 3 mahal ovqatlaning va shakarli mahsulotlarni kamaytiring."],
+          ["Vitamin va minerallar", "Kalsiy va boshqa muhim elementlar tish hamda suyaklarni qo‘llab-quvvatlaydi."],
+          ["O'zingizni tekshiring", "Oq yoki qora dog‘lar, milk qonashi va og‘riq paydo bo‘lsa, e’tibor bering."]
+        ]
+      },
+
+      young: {
+        title: "Yoshlar",
+        subtitle: "20–35 yosh",
+        cards: [
+          ["Kunlik parvarish", "Tishlarni kuniga kamida ikki marta tozalash odatini saqlang."],
+          ["Shakarni nazorat qiling", "Tez-tez shirinlik iste’mol qilishni kamaytirish og‘iz gigiyenasiga yordam beradi."],
+          ["Tekshiruv", "Noqulaylik, og‘riq yoki milk bilan bog‘liq muammo bo‘lsa, stomatologga murojaat qiling."]
+        ]
+      },
+
+      pregnancy: {
+        title: "Homiladorlar",
+        subtitle: "Homiladorlik davrida",
+        cards: [
+          ["Og‘iz gigiyenasi", "Tishlarni yumshoq harakatlar bilan muntazam tozalang."],
+          ["Milk holati", "Milk qonashi yoki shishishi davom etsa, mutaxassis bilan maslahatlashish kerak."],
+          ["Ovqatlanish", "Muvozanatli ovqatlanish va yetarli suyuqlik iste’mol qilish muhim."]
+        ]
+      },
+
+      technique: {
+        title: "Texnika",
+        subtitle: "Tishlarni to‘g‘ri tozalash",
+        cards: [
+          ["1. Tashqi yuzalar", "Cho‘tkani milk chizig‘iga yaqin tutib, mayin harakatlar bilan tozalang."],
+          ["2. Ichki yuzalar", "Har bir tishning ichki tomoniga ham vaqt ajrating."],
+          ["3. Chaynash yuzalari", "Orqa tishlarning chaynash yuzalarini ham tozalang."],
+          ["4. Til", "Og‘iz gigiyenasini yakunlash uchun til yuzasini ehtiyotkorlik bilan tozalang."]
+        ]
+      }
+    };
+
+    function openCategory(categoryId) {
+      const category = categories[categoryId];
+
+      if (!category) {
+        return;
+      }
+
+      state.category = categoryId;
+
+      document.getElementById("category-title").textContent =
+        category.title;
+
+      document.getElementById("category-subtitle").textContent =
+        category.subtitle;
+
+      const content = document.getElementById("category-content");
+
+      content.innerHTML = category.cards
+        .map(([title, description]) => `
+          <div class="card">
+            <h3>${title}</h3>
+            <p>${description}</p>
+          </div>
+        `)
+        .join("");
+
+      showScreen("s-category");
+    }
+
+    /*
+     * =========================
+     * 7. REMINDERS
+     * =========================
+     */
+
+    function toggleReminder(type) {
+      state.reminders[type] = !state.reminders[type];
+
+      const element =
+        document.getElementById(type === "morning" ? "tg1" : "tg2");
+
+      element.classList.toggle("on", state.reminders[type]);
+
+      saveState();
+      renderReminderText();
+    }
+
+    function renderReminders() {
+      document.getElementById("tg1")
+        .classList.toggle("on", state.reminders.morning);
+
+      document.getElementById("tg2")
+        .classList.toggle("on", state.reminders.evening);
+
+      renderReminderText();
+    }
+
+    function renderReminderText() {
+      const active = [];
+
+      if (state.reminders.morning) {
+        active.push("ertalabki 07:30");
+      }
+
+      if (state.reminders.evening) {
+        active.push("kechqurungi 21:00");
+      }
+
+      document.getElementById("home-reminder-text").textContent =
+        active.length
+          ? active.join(" · ")
+          : "Eslatmalar o‘chirilgan";
+    }
+
+    /*
+     * =========================
+     * 8. TIMER
+     * =========================
+     */
+
+    const ZONE_SECONDS = 30;
+    const TOTAL_ZONES = 4;
+
+    function resetTimer() {
+      stopTimer();
+
+      state.timer.zoneIndex = 0;
+      state.timer.secondsLeft = ZONE_SECONDS * TOTAL_ZONES;
+
+      document.getElementById("ring-time").textContent =
+        formatTime(state.timer.secondsLeft);
+
+      document.getElementById("timer-btn").textContent = "Boshlash";
+
+      renderZones();
+    }
+
+    function startTimer() {
+      state.timer.running = true;
+
+      document.getElementById("timer-btn").textContent = "To‘xtatish";
+
+      state.timer.intervalId =
+        setInterval(tickTimer, 1000);
+
+      renderZones();
+    }
+
+    function stopTimer() {
+      state.timer.running = false;
+
+      if (state.timer.intervalId !== null) {
+        clearInterval(state.timer.intervalId);
+        state.timer.intervalId = null;
+      }
+    }
+
+    function toggleTimer() {
+      if (state.timer.running) {
+        stopTimer();
+
+        document.getElementById("timer-btn").textContent =
+          "Davom ettirish";
+
+        renderZones();
+        return;
+      }
+
+      // После завершения начинаем заново.
+      if (state.timer.secondsLeft <= 0) {
+        resetTimer();
+      }
+
+      startTimer();
+    }
+
+    function tickTimer() {
+      if (!state.timer.running) {
+        return;
+      }
+
+      state.timer.secondsLeft -= 1;
+
+      // Зона определяется по оставшемуся общему времени.
+      const elapsed =
+        ZONE_SECONDS * TOTAL_ZONES - state.timer.secondsLeft;
+
+      state.timer.zoneIndex =
+        Math.min(
+          Math.floor(elapsed / ZONE_SECONDS),
+          TOTAL_ZONES - 1
+        );
+
+      document.getElementById("ring-time").textContent =
+        formatTime(Math.max(state.timer.secondsLeft, 0));
+
+      renderZones();
+
+      if (state.timer.secondsLeft <= 0) {
+        finishTimer();
+      }
+    }
+
+    function finishTimer() {
+      stopTimer();
+
+      state.timer.zoneIndex = TOTAL_ZONES;
+
+      document.getElementById("ring-time").textContent = "Tayyor!";
+      document.getElementById("timer-btn").textContent =
+        "Qaytadan boshlash";
+
+      renderZones();
+
+      // Полностью завершённый таймер = сегодняшняя отметка.
+      markWashed();
+    }
+
+    function renderZones() {
+      document.querySelectorAll(".zone").forEach((zone, index) => {
+        zone.classList.remove("active", "done");
+
+        if (index < state.timer.zoneIndex) {
+          zone.classList.add("done");
+        }
+
+        if (
+          state.timer.running &&
+          index === state.timer.zoneIndex
+        ) {
+          zone.classList.add("active");
+        }
+      });
+    }
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const remaining = seconds % 60;
+
+      return (
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(remaining).padStart(2, "0")
+      );
+    }
+
+    /*
+     * =========================
+     * 9. RENDER
+     * =========================
+     */
+
+    function renderAll() {
+      renderProfile();
+      renderReminders();
+      renderStreak();
+      renderZones();
+    }
+
+    /*
+     * =========================
+     * 10. STARTUP
+     * =========================
+     */
+
+    function init() {
+      loadState();
+      renderAll();
+
+      if (state.profile.name) {
+        showScreen("s-home");
+      } else {
+        showScreen("s-onboard");
+      }
+
+      // Если пользователь открыл onboarding повторно,
+      // его данные остаются заполненными.
+      fillProfileForm();
+    }
+
+    init();
+  </script>
+</body>
+</html>
